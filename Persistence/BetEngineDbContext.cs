@@ -6,5 +6,5 @@ using Microsoft.EntityFrameworkCore;
 
 public class BetEngineDbContext(DbContextOptions options): DbContext(options)
 {
-    public DbSet<Bet> Bet { get; set; }
+    public DbSet<Bets> Bets { get; set; }
 }
