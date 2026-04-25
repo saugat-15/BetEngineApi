@@ -170,10 +170,10 @@ BetEngineApi/
 - [ ] Solution builds cleanly
 
 ### Phase 2 — Domain & Database
-- [ ] Domain entities created (`Bet`, `Event`, `User`, `Odds`)
-- [ ] `AppDbContext` configured in Persistence layer
-- [ ] Initial EF Core migration created
-- [ ] Database seeded with test data
+- [x] Domain entities created (`Bet`, `Event`, `User`, `Odds`)
+- [x] `AppDbContext` configured in Persistence layer
+- [x] Initial EF Core migration created
+- [x] Database seeded with test data
 
 ### Phase 3 — CRUD with CQRS + MediatR
 - [ ] MediatR installed and configured
