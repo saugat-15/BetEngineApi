@@ -7,7 +7,7 @@ public class DbInitializer
     public static async Task SeedDatabase(BetEngineDbContext context)
     {
         //return if the db is not empty
-        if (context.Bet.Any()) return;
+        if (context.Bets.Any()) return;
         
         var userId1 = Guid.NewGuid();
         var userId2 = Guid.NewGuid();
@@ -15,7 +15,7 @@ public class DbInitializer
         var eventId2 = Guid.NewGuid();
         var eventId3 = Guid.NewGuid();
 
-        var bets = new List<Bet>
+        var bets = new List<Bets>
         {
             new()
             {
@@ -103,7 +103,7 @@ public class DbInitializer
             },
         };
         
-        context.Bet.AddRange(bets);
+        context.Bets.AddRange(bets);
         await context.SaveChangesAsync();
     }
 }

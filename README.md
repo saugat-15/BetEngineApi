@@ -137,26 +137,23 @@ BetEngineApi/
 │
 ├── Application/
 │   ├── Bets/
-│   │   ├── List.cs         # Query — GET all bets
-│   │   ├── Details.cs      # Query — GET by ID
-│   │   ├── Create.cs       # Command — POST
-│   │   ├── Edit.cs         # Command — PUT
-│   │   └── Delete.cs       # Command — DELETE
+│   │   ├── Queries/
+│   │   │   ├── GetBets.cs      # Query — GET all bets
+│   │   │   └── GetBetById.cs   # Query — GET by ID
+│   │   └── Commands/
+│   │       ├── CreateBet.cs    # Command — POST
+│   │       ├── EditBet.cs      # Command — PUT
+│   │       └── DeleteBet.cs    # Command — DELETE
 │   ├── Core/
-│   │   └── MappingProfiles.cs
-│   └── Interfaces/
-│       └── IAppDbContext.cs
+│      └── MappingProfiles.cs
 │
 ├── Domain/
-│   ├── Bet.cs
-│   ├── Event.cs
-│   ├── User.cs
-│   └── Odds.cs
+│   ├── Bets.cs
 │
 └── Persistence/
-    ├── AppDbContext.cs
-    ├── Migrations/
-    └── Seed.cs
+    ├── BetEngineDbContext.cs
+    ├── DbInitializer.cs
+    └── Migrations/
 ```
 
 ---
@@ -176,8 +173,8 @@ BetEngineApi/
 - [x] Database seeded with test data
 
 ### Phase 3 — CRUD with CQRS + MediatR
-- [ ] MediatR installed and configured
-- [ ] `List` query — GET all bets
+- [x] MediatR installed and configured
+- [x] `List` query — GET all bets
 - [ ] `Details` query — GET bet by ID
 - [ ] `Create` command — POST new bet
 - [ ] `Edit` command — PUT update bet
