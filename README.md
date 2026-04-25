@@ -164,10 +164,10 @@ BetEngineApi/
 ## Progress
 
 ### Phase 1 — Project Setup
-- [ ] Solution scaffolded with Clean Architecture (API, Application, Domain, Persistence)
-- [ ] Project references wired correctly (no circular dependencies)
-- [ ] Git repository initialised with `.gitignore`
-- [ ] Solution builds cleanly
+- [x] Solution scaffolded with Clean Architecture (API, Application, Domain, Persistence)
+- [x] Project references wired correctly (no circular dependencies)
+- [x] Git repository initialised with `.gitignore`
+- [x] Solution builds cleanly
 
 ### Phase 2 — Domain & Database
 - [ ] Domain entities created (`Bet`, `Event`, `User`, `Odds`)
