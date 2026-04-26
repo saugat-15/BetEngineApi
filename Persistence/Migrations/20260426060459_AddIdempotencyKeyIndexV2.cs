@@ -6,14 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class RenameBetToBetstable : Migration
+    public partial class AddIdempotencyKeyIndexV2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Bet");
-
             migrationBuilder.CreateTable(
                 name: "Bets",
                 columns: table => new
@@ -21,6 +18,7 @@ namespace Persistence.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     UserId = table.Column<Guid>(type: "TEXT", nullable: false),
                     EventId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    IdempotencyKey = table.Column<string>(type: "TEXT", nullable: false),
                     Stake = table.Column<decimal>(type: "TEXT", nullable: false),
                     Odds = table.Column<decimal>(type: "TEXT", nullable: false),
                     Payout = table.Column<decimal>(type: "TEXT", nullable: true),
@@ -34,6 +32,12 @@ namespace Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Bets", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bets_IdempotencyKey",
+                table: "Bets",
+                column: "IdempotencyKey",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -41,27 +45,6 @@ namespace Persistence.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Bets");
-
-            migrationBuilder.CreateTable(
-                name: "Bet",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    BetType = table.Column<int>(type: "INTEGER", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Currency = table.Column<string>(type: "TEXT", nullable: false),
-                    EventId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Odds = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Payout = table.Column<decimal>(type: "TEXT", nullable: true),
-                    SettledAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    Stake = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Status = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<Guid>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bet", x => x.Id);
-                });
         }
     }
 }

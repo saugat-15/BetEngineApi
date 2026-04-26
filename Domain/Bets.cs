@@ -22,6 +22,7 @@ public class Bets
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public Guid EventId { get; set; }
+        public required string IdempotencyKey { get; set; }
 
         public decimal Stake { get; set; }
         public decimal Odds { get; set; }

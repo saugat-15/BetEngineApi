@@ -11,8 +11,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BetEngineDbContext))]
-    [Migration("20260425042633_RenameBetToBetstable")]
-    partial class RenameBetToBetstable
+    [Migration("20260426060459_AddIdempotencyKeyIndexV2")]
+    partial class AddIdempotencyKeyIndexV2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,10 @@ namespace Persistence.Migrations
                     b.Property<Guid>("EventId")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("IdempotencyKey")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<decimal>("Odds")
                         .HasColumnType("TEXT");
 
@@ -58,6 +62,9 @@ namespace Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdempotencyKey")
+                        .IsUnique();
 
                     b.ToTable("Bets");
                 });
