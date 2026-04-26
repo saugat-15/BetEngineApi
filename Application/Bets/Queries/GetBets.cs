@@ -7,16 +7,16 @@ namespace Application.Bets.Queries;
 
 public class GetBets
 {
-    public class Query : IRequest<List<Domain.Bets>>
+    public class Query : IRequest<List<Bet>>
     {
         
     }
     
-    public class Handler(BetEngineDbContext context): IRequestHandler<Query, List<Domain.Bets>>
+    public class Handler(BetEngineDbContext context): IRequestHandler<Query, List<Bet>>
     {
-        public async Task<List<Domain.Bets>> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<List<Bet>> Handle(Query request, CancellationToken cancellationToken)
         {
-            return await context.Bets.ToListAsync(cancellationToken);
+            return await context.Bet.ToListAsync(cancellationToken);
         }
     }
     
