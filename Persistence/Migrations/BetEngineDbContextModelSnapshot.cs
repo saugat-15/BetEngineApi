@@ -17,7 +17,7 @@ namespace Persistence.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.7");
 
-            modelBuilder.Entity("Domain.Bets", b =>
+            modelBuilder.Entity("Domain.Bet", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace Persistence.Migrations
                     b.HasIndex("IdempotencyKey")
                         .IsUnique();
 
-                    b.ToTable("Bets");
+                    b.ToTable("Bet");
                 });
 #pragma warning restore 612, 618
         }

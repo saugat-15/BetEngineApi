@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 public class BetEngineDbContext(DbContextOptions options): DbContext(options)
 {
-    public DbSet<Bets> Bets { get; set; }
+    public DbSet<Bet> Bet { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Bets>()
+        modelBuilder.Entity<Bet>()
             .HasIndex(b => b.IdempotencyKey)
             .IsUnique();
     }

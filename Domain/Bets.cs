@@ -16,7 +16,7 @@ public enum BetStatus
     Cancelled
 }
 
-public class Bets
+public class Bet
 {
     //identity fields
         public Guid Id { get; set; }

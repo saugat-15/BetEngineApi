@@ -11,8 +11,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BetEngineDbContext))]
-    [Migration("20260426060459_AddIdempotencyKeyIndexV2")]
-    partial class AddIdempotencyKeyIndexV2
+    [Migration("20260426073850_AddIdempotencyKeyIndex")]
+    partial class AddIdempotencyKeyIndex
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace Persistence.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.7");
 
-            modelBuilder.Entity("Domain.Bets", b =>
+            modelBuilder.Entity("Domain.Bet", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,7 +66,7 @@ namespace Persistence.Migrations
                     b.HasIndex("IdempotencyKey")
                         .IsUnique();
 
-                    b.ToTable("Bets");
+                    b.ToTable("Bet");
                 });
 #pragma warning restore 612, 618
         }

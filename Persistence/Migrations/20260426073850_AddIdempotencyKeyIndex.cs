@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddIdempotencyKeyIndexV2 : Migration
+    public partial class AddIdempotencyKeyIndex : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Bets",
+                name: "Bet",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -30,12 +30,12 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bets", x => x.Id);
+                    table.PrimaryKey("PK_Bet", x => x.Id);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bets_IdempotencyKey",
-                table: "Bets",
+                name: "IX_Bet_IdempotencyKey",
+                table: "Bet",
                 column: "IdempotencyKey",
                 unique: true);
         }
@@ -44,7 +44,7 @@ namespace Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Bets");
+                name: "Bet");
         }
     }
 }

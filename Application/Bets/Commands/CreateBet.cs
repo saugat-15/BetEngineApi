@@ -9,7 +9,7 @@ public class CreateBet
 {
     public class Command : IRequest<string>
     {
-        public required Domain.Bets Bets { get; set; }
+        public required Domain.Bet Bet { get; set; }
     }
 
     public class Handler(BetEngineDbContext context) : IRequestHandler<Command, string>
@@ -17,16 +17,16 @@ public class CreateBet
         public async Task<string> Handle(Command request, CancellationToken cancellationToken)
         {
             var existingBet =
-                    await context.Bets.FirstOrDefaultAsync(b => b.IdempotencyKey == request.Bets.IdempotencyKey,
+                    await context.Bet.FirstOrDefaultAsync(b => b.IdempotencyKey == request.Bet.IdempotencyKey,
                         cancellationToken)
                 ;
             if (existingBet != null) return existingBet.Id.ToString();
             
-            request.Bets.Id = Guid.NewGuid();
+            request.Bet.Id = Guid.NewGuid();
 
-            var bet = context.Bets.Add(request.Bets);
+            var bet = context.Bet.Add(request.Bet);
             await context.SaveChangesAsync(cancellationToken);
-            return request.Bets.Id.ToString();
+            return request.Bet.Id.ToString();
         }
     }
 }
