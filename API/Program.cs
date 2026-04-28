@@ -1,4 +1,5 @@
 using Application.Bets.Queries;
+using Application.Core;
 using Microsoft.EntityFrameworkCore;
 
 using Persistence;
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<BetEngineDbContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<GetBets.Handler>());
+builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfiles).Assembly);
 
 
 var app = builder.Build();
