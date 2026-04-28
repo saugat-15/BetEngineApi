@@ -29,4 +29,18 @@ public class BetsController: BaseApiController
         var betId = await Mediator.Send(new CreateBet.Command { Bet = bet });
         return CreatedAtAction(nameof(GetBetDetails), new { id = betId }, betId);
     }
+
+    [HttpPut]
+    public async Task<ActionResult> EditBet(Bet bet)
+    {
+        await Mediator.Send(new EditBet.Command { Bet = bet });
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteBet(Guid id)
+    {
+        await Mediator.Send(new DeleteBet.Command { Id = id });
+        return NoContent();
+    }
 }
